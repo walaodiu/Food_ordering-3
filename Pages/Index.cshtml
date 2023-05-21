@@ -1,0 +1,555 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <title>Image Slider</title>
+	<style>
+		img {
+			max-width: 50%;
+			max-height: 50%;
+		}
+
+		.sub-heading {
+			text-align: center;
+			color: var(--green);
+			font-size: 2rem;
+			padding-top: 3rem;
+		}
+
+		.heading {
+			text-align: center;
+			color: var(--black);
+			font-size: 3rem;
+			padding-bottom: 2rem;
+			text-transform: uppercase;
+		}
+
+		.box {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			
+		}
+
+		.box img {
+			max-width: 50%;
+			margin-right: 1rem;
+			display: block;
+			margin-bottom: 50px;
+		}
+
+		.box p {
+			max-width: 45%;
+			text-align: right;
+		}
+
+		.box h3 {
+			position: absolute;
+			top: 0;
+			left: 0;
+			padding: 10px;
+			background-color: #fff;
+			z-index: 1;
+		}
+
+		.btn {
+			background-color: #4CAF50;
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+		}
+
+		.btn:hover {
+			background-color: #3e8e41;
+		}
+
+		.about .row{
+			display: flex;
+			flex-wrap: wrap;
+			gap:1.5rem;
+			align-items: center;
+		}
+
+		.about .row .image{
+			flex:1 1 45rem;
+		}
+
+		.about .row .image img{
+			width: 100%;
+		}
+
+		.about .row .content{
+			flex: 1 1 45rem;
+		}
+
+		.about .row .content h3{
+			color: #00237F;
+			font-size: 2rem;
+			padding:.5rem 0;
+		}
+
+		.about .row .content p {
+			color: var(--light-color);
+			font-size: 1rem;
+			padding: .5rem 0;
+			line-height: 2;
+		}
+		.about .sub-heading{
+			 color:#3e8e41;
+		}
+
+		.about .heading {
+			color:#00237F;
+		}
+
+		.about .row .content .icons-container{
+			display: flex;
+			gap:1rem;
+			flex-wrap: wrap;
+			padding:1rem 0;
+			margin-top: .5rem;
+		}
+
+		.about .row .content .icons-container .icons{
+			background:#eee;
+			border-radius: .5rem;
+			border:.1rem solid rgba(0,0,0,.2);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap:1rem;
+			flex: 1 1 17rem;
+			padding:1.5rem 1rem;
+		}
+
+		.about .row .content .icons-container .icons i{
+			font-size: 2.5rem;
+			color:#3e8e41;
+		}
+
+		.about .row .content .icons-container .icons span{
+			font-size: 1.5rem;
+			color: #00237F;
+		}
+
+		.menu .box-container .box{
+			background: #fff;
+			border:.1rem solid rgba(0,0,0,.2);
+			border-radius: .5rem;
+			box-shadow: var(--box-shadow);
+		} 
+
+		.menu .box-container .box .image{
+			height: 25rem;
+			width: 100%;
+			padding:1.5rem;
+			overflow: hidden;
+			position:relative;
+		}
+
+		.menu .box-container .box .image img{
+			height: 100%;
+			width: 100%;
+			border-radius: .5rem;
+		}
+
+		.menu .box-container .box .content h3{
+
+			color:#3e8e41;
+			font-size: 2rem;
+		}
+
+		.menu .box-container .box .content p{
+			color:#00237f;
+			font-size: 1rem;
+			padding:.5rem 0;
+			line-height: 1.5;
+		}
+
+		.menu .box-container .box .content .price{
+			color:#3e8e41;
+			margin-left: 1rem;
+			font-size: 1.5rem;
+		}
+
+		.box p {
+			text-align: center;
+		}
+
+		.review .slide{
+			padding:2rem;
+			box-shadow:var(--box-shadow);
+			border:.1rem solid rgba(0,0,0,.2);
+			border-radius: .5rem;
+			position: relative;
+		}
+
+		.review .slide .user{
+			display:flex;
+			gap:1.5rem;
+			align-items: center;
+			padding-bottom: 1.5rem;
+		}
+
+		.review .slide .user img{
+			height: 7rem;
+			width: 7rem;
+			border-radius: 50%;
+			object-fit: cover;
+		}
+
+		.review .slide .user h3{
+			color:var(--black);
+			font-size: 1rem;
+			padding-bottom: .5rem;
+		}
+
+		.review .slide .user i{
+			font-size: 1.3rem;
+			color:#3e8e41
+		}
+
+		.review .slide p{
+			font-size: 1.3rem;
+			line-height: 1.8;
+			color:var(--light-color);
+		}
+
+
+	</style>
+</head>
+
+<body>
+    <section class="dishes" id="dishes">
+        <h3 class="sub-heading">Our dishes</h3>
+        <h1 class="heading">Popular dishes</h1>
+        <div class="box-container">
+            <div class="box">
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-eye"></a>
+                <img src="~/images/download (1).jpg"  alt="Tasty food">
+                <h3>Spicy noodles</h3>
+				<p>These spicy noodles are a delicious explosion of flavors that will tantalize your taste buds.</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <span>RM5.00</span>
+                <a href="#" class="btn">Add to cart</a>
+            </div>
+        </div>
+
+        <div class="box-container">
+            <div class="box">
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-eye"></a>
+                <img src="~/images/download1.jpg" alt="Tasty food">
+					<h3>Fried Chicken</h3>
+					<p>The delicious Fried chicken is crispy on the outside and juicy on the inside, with a flavorful blend of herbs and spices that make it a mouth-watering treat for any food lover.</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <span>RM10.00</span>
+				<a href="#" class="btn" onclick="addToCart()">Add to cart</a>
+            </div>
+        </div>
+
+        <div class="box-container">
+            <div class="box">
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-eye"></a>
+				<img src="~/images/bubble tea.jpg"  alt="Tasty food">
+                <h3>Bubble Tea</h3>
+				<p>Bubble tea is a delicious beverage made with tea, milk, and chewy tapioca pearls that add a unique texture and sweetness to every sip.</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <span>RM10.50</span>
+				<a href="#" class="btn" onclick="addToCart()">Add to cart</a>
+				</div>
+            </div>
+
+			<div class="box-container">
+				<div class="box">
+					<a href="#" class="fas fa-heart"></a>
+					<a href="#" class="fas fa-eye"></a>
+					<img src="~/images/download2.jpg" alt="Tasty food">
+					<h3>Pizza</h3>
+				<p>"Delicious pizza is a mouthwatering combination of crispy crust, savory sauce, melty cheese, and flavorful toppings."</p>
+					<div class="stars">
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star-half-alt"></i>
+					</div>
+					<span>RM7.00</span>
+				<a href="#" class="btn" onclick="addToCart()">Add to cart</a>
+				</div>
+
+			<div class="box-container">
+				<div class="box">
+					<a href="#" class="fas fa-heart"></a>
+					<a href="#" class="fas fa-eye"></a>
+					<img src="~/images/burger.jpg" alt="Tasty food">
+					<h3>Burger</h3>
+					<p>"A delicious burger is a savory and satisfying meal, with a juicy patty, flavorful toppings, and a toasted bun."</p>
+					<div class="stars">
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star-half-alt"></i>
+					</div>
+					<span>RM5.00</span>
+					<a href="#" class="btn" onclick="addToCart()">Add to cart</a>
+				</div>
+			</div>
+        </div>
+    </section>
+
+	<section class="about" id="about">
+
+		<h3 class="sub-heading"> about us</h3>
+		<h1 class="heading"> Why Choose Us?</h1>
+
+		<div class="row">
+
+			<div class="image">
+                <img src="~/images/food.jpg" alt="" />
+			</div>
+
+			<div class="content">
+				<h3>Best food in the university</h3>
+				<p>The university canteen offers a wide variety of delicious and healthy food options for students to choose from. Whether you're in the mood for a hearty meal or a quick snack,
+					the canteen has got you covered. The dishes are made with fresh, high-quality ingredients and prepared with care by skilled chefs.</p>
+				<p>From mouth-watering burgers and sandwiches to flavorful pasta dishes and stir-fries, the canteen has something for every taste and craving. The vegetarian and vegan options are equally appetizing and satisfying, with creative and innovative dishes that will please even the most discerning palate.</p>
+				<div class="icons-container">
+					<div class="icons">
+						<i class="shipping-fast"></i>
+						<span>Easy to order                                                                                                                </span>
+					</div>
+					<div class="icons">
+						<i class="fas fa-dollar-sign"></i>
+						<span>Easy payment</span>
+					</div>
+					<div class="icons">
+						<i class="fas fa-headset"></i>
+						<span>Quick Service</span>
+					</div>
+					<div class="btn-container">
+						<a href="#" class="btn">learn more</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="menu" id="menu">
+
+
+		<h3 class="sub-heading"> Our Menu</h3>
+		<h1 class="heading"> Today's speciality</h1> 
+
+		<div class="box-container">
+
+			<div class="box">
+				<div class="image">
+                    <img src="~/images/mee jawa.jpg" alt="">
+					<a href="#" class="fas fa-heart"></a>
+				</div>
+				<div class="content">
+					<div class="stars">
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star-half-alt"></i>
+					</div>
+					<h3>Delicious Food</h3>
+					<p>Imagine a dish that makes your mouth water just by looking at it - the aroma alone is enough to entice you. The first thing you notice is the rich, golden-brown color that coats the food. It's crispy on the outside, yet tender and juicy on the inside, with each bite bursting with flavor.</p>
+					<a href="#" class="btn" onclick="addToCart('Mee Jawa', '7.50')">Add to cart</a>
+					<span class="price">RM7.50</span>
+				</div>
+			</div>
+
+			<div class="box">
+				<div class="image">
+                    <img src="~/images/kueh tiaw.jpg" alt="">
+					<a href="#" class="fas fa-heart"></a>
+				</div>
+				<div class="content">
+					<div class="stars">
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star-half-alt"></i>
+					</div>
+					<h3>Delicious Food</h3>
+					<p>Kuey Teow is a delectable Malaysian dish that is sure to delight your taste buds.</p>
+					<a href="#" class="btn" onclick="addToCart('Kueh Tiaw', '5.50')">Add to cart</a>
+					<span class="price">RM5.50</span>
+				</div>
+			</div>
+
+			<div class="box">
+				<div class="image">
+                    <img src="~/images/laksa.jpg"  alt="">
+					<a href="#" class="fas fa-heart"></a>
+				</div>
+				<div class="content">
+					<div class="stars">
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star"></i>
+						<i class="fas fa-star-half-alt"></i>
+					</div>
+					<h3>Delicious Food</h3>
+					<p>Laksa is a beloved dish in Southeast Asia, and for good reason.</p>
+					<a href="#" class="btn" onclick="addToCart('Laksa', '8.50')">Add to cart</a>
+					<span class="price">RM8.50</span>
+				</div>
+			</div>
+
+				<div class="box">
+					<div class="image">
+                        <img src="~/images/maggi.jpg"  alt="">
+						<a href="#" class="fas fa-heart"></a>
+					</div>
+					<div class="content">
+						<div class="stars">
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star"></i>
+							<i class="fas fa-star-half-alt"></i>
+						</div>
+						<h3>Delicious Food</h3>
+						<p>Maggi Goreng is a Malaysian dish that has become a popular comfort food around the world.</p>
+					<a href="#" class="btn" onclick="addToCart('Maggi  Goreng', '5')">Add to cart</a>
+						<span class="price">RM5</span>
+					</div>
+				</div>
+		</div>
+
+		<section class="review" id="review">
+
+			<h3 class="sub-heading"> Customer's review</h3>
+			<h1 class="heading"> What they say</h1>
+
+			<div class="review-slider">
+
+				<div class="wrapper">
+					<div class="slide">
+						<div class="user">
+							<img src="~/images/men1.jpg" alt="">
+							<div class="user-info">
+								<h3>John</h3>
+								<div class="stars">
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star-half-alt"></i>
+								</div>
+							</div>
+						</div>
+						<p>I can tell you that there's nothing quite like sinking my teeth into a delicious meal that satisfies all my cravings. </p>
+					</div>
+				</div>	
+				
+				<div class="wrapper">
+					<div class="slide">
+						<div class="user">
+                            <img src="~/images/men2.jpg" alt="">
+							<div class="user-info">
+								<h3>Chris</h3>
+								<div class="stars">
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star-half-alt"></i>
+								</div>
+							</div>
+						</div>
+						<p>This is not just a meal, but a culinary journey that takes you to new heights of pleasure. </p>
+					</div>
+				</div>
+
+				<div class="wrapper">
+					<div class="slide">
+						<div class="user">
+                            <img src="~/images/men3.jpg" alt="">
+							<div class="user-info">
+								<h3>Ali</h3>
+								<div class="stars">
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star"></i>
+									<i class="fas fa-star-half-alt"></i>
+								</div>
+							</div>
+						</div>
+						<p>Let me tell you, this food is absolutely delicious! The aroma alone is enough to make your mouth water. </p>
+					</div>
+				</div>
+			</div>
+        </section>
+			
+		<script>
+			function addToCart() {
+				var itemImage = document.querySelector('.box img').src;
+				var itemName = document.querySelector('.box h3').textContent;
+				var itemPrice = document.querySelector('.box span').textContent;
+
+				var cartItem = {
+					image: itemImage,
+					name: itemName,
+					price: itemPrice
+				};
+
+				alert('Item added to cart!');
+
+				cartItems.push(cartItem);
+				localStorage.setItem('cartItems', JSON.stringify(cartItems)); // 存储购物车物品到本地存储
+
+				window.location.href = '@Url.Action("Cart", "ControllerName")'; // 重定向到购物车页面
+			}
+		</script>
+
+
+        
+
+    </section>
+
+
+
+</body>
+</html>

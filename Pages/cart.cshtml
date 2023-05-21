@@ -1,0 +1,84 @@
+﻿@page
+@model Food_ordering_3.Pages.Shared.cartModel
+@{
+    ViewData["Title"] = "Cart";
+}
+}
+ 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>购物车</title>
+    <style>
+        /* CSS样式 */
+        /* 可根据需要自定义样式 */
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+            .cart-item img {
+                width: 100px;
+                height: 100px;
+                margin-right: 10px;
+            }
+
+            .cart-item h4, .cart-item span {
+                margin: 0;
+            }
+    </style>
+</head>
+<body>
+    <h1>购物车</h1>
+
+    <div id="cart-items-container"></div>
+
+    <script>
+        // 获取本地存储中的购物车物品
+        var cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+        // 在购物车页面中动态添加购物车物品
+        var cartItemsContainer = document.getElementById('cart-items-container');
+        cartItems.forEach(function (item) {
+            var cartItemDiv = document.createElement('div');
+            cartItemDiv.classList.add('cart-item');
+
+            var itemImage = document.createElement('img');
+            itemImage.src = item.image;
+            cartItemDiv.appendChild(itemImage);
+
+            var itemName = document.createElement('h4');
+            itemName.textContent = item.name;
+            cartItemDiv.appendChild(itemName);
+
+            var itemPrice = document.createElement('span');
+            itemPrice.textContent = item.price;
+            cartItemDiv.appendChild(itemPrice);
+
+            var removeButton = document.createElement('button');
+            removeButton.textContent = '移除';
+            removeButton.addEventListener('click', function () {
+                removeCartItem(item.name);
+            });
+            cartItemDiv.appendChild(removeButton);
+
+            cartItemsContainer.appendChild(cartItemDiv);
+        });
+
+        function removeCartItem(itemName) {
+            // 在这里实现移除购物车物品的逻辑，可以从本地存储中移除对应的物品
+            // 然后重新加载页面以更新购物车内容
+            // 你也可以使用 Ajax 请求发送到服务器端进行删除操作
+
+            // 示例代码：
+            var updatedCartItems = cartItems.filter(function (item) {
+                return item.name !== itemName;
+            });
+
+            localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+            location.reload(); // 刷新页面以更新购物车内容
+        }
+    </script>
+</body>
+</html>

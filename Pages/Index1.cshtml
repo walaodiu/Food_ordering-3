@@ -1,0 +1,248 @@
+﻿@page
+@model Food_ordering_3.Pages.Index1Model
+@{
+    ViewData["Title"] = "Categories";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant</title>
+    <style>
+
+   *{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    background: #ffffff;
+}
+.container{
+    margin: 5px auto;
+    text-align: center;
+}
+.container .title{
+    width: 60%;
+    margin: 0px auto 30px auto;
+}
+.container .title h2{
+    font-family: 'Lobster', cursive;
+    font-size: 25px;
+    margin-bottom: 20px;
+    padding-top: 3rem;
+}
+.container .title p{
+    color: #333;
+    font-size: 14px;
+}
+.content .list{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+.content .list li{
+    color: #000;
+    margin: 0px 15px;
+    transition: .3s ease-in-out;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 600;
+    position: relative;
+}
+.content .list li::after{
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    width: 0%;
+    height: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #d4a373;
+    transition: .4s ease-in-out;
+}
+.content .list li:hover::after{
+    width: 100%;
+}
+.content .list li:first-child{
+    color: #d4a373;
+}
+.box_flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.box{
+    width: 32%;
+    background: #FFF;
+    border-radius: 3px;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    animation: movement 1s ease-in-out;
+}
+.box .box_img{
+    width: 35%;
+    text-align: center;
+}
+.box_img img{
+    width: 130px;
+    height: 130px;
+}
+.box .text{
+    text-align: left;
+    width: 60%;
+}
+.text h3{
+    text-transform: capitalize;
+}
+.text hr{
+    width: 50px;
+    background: #d4a373;
+    height: 3px;
+    margin: 5px 0px 10px 0px;
+}
+.text section{
+    font-weight: 600;
+    margin-bottom: -5px;
+}
+.text .stars{
+    margin-bottom: -2px;
+}
+.text .stars i{
+    font-size: 13px;
+    color: #d4a373;
+}
+.text article{
+    font-size: 15px;
+}
+
+.btn-add-to-cart {
+    border: 1px solid black;
+    padding: 5px 10px;
+ }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="title">
+            <h2>Special Food Menu</h2>
+            <p>
+                Our food is not only delicious, but also offers a wide variety of options for students to choose from based on their preferences. Our menu includes a range of dishes, from traditional local cuisine to international favorites, all prepared with utmost care for flavor and taste. Our chefs are skilled in various cooking techniques and use only the freshest ingredients to create their dishes, taking into account the tastes and dietary needs of our students. Whether it's breakfast, lunch, dinner or snacks, we provide a multitude of choices to ensure that students can enjoy a satisfying meal in our restaurant.
+            </p>
+        </div>
+        <div class="content">
+            <div class="list">
+                <li data-color=".Noodles">Noodles</li>
+                <li data-color=".Rice">Rice</li>
+                <li data-color=".Side orders">Side orders</li>
+                <li data-color=".Beverage">Beverage</li>
+            </div>
+
+            <div class="box_flex">
+
+                <div class="box Noodles">
+                    <div class="box_img">
+                        <img src="~/images/kueh tiaw.jpg"  alt="">
+                    </div>
+                    <div class="text">
+                        <h3>Kuew Tiaw</h3>
+                        <hr>
+                        <section>RM5.50</section>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <article>Category: Noodles</article>
+                        <button class="btn btn-add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="box Noodles">
+                    <div class="box_img">
+                        <img src="~/images/laksa.jpg"  alt="">
+                    </div>
+                    <div class="text">
+                        <h3>Laksa</h3>
+                        <hr>
+                        <section>RM8.50</section>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <article>Category: Noodles</article>
+                        <button class="btn btn-add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="box Noodles">
+                    <div class="box_img">
+                        <img src="~/images/maggi.jpg"  alt="">
+                    </div>
+                    <div class="text">
+                        <h3>Maggi Goreng</h3>
+                        <hr>
+                        <section>RM5.00</section>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <article>Category: Noodles</article>
+                        <button class="btn btn-add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+
+                <div class="box Noodles">
+                    <div class="box_img">
+                        <img src="~/images/mee jawa.jpg" alt="">
+                    </div>
+                    <div class="text">
+                        <h3>Mee jawa</h3>
+                        <hr>
+                        <section>RM7.50</section>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <article>Category: Noodles</article>
+                        <button class="btn btn-add-to-cart">Add to Cart</button>
+                    </div>
+                
+                   </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <script src="~/js/site.js"></script>
+</body>
+</html>
